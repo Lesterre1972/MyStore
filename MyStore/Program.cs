@@ -2,6 +2,8 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace MyStore
 {
@@ -35,6 +37,36 @@ namespace MyStore
             driver.Manage().Window.Maximize();
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
         }
+        private List<IWebElement> GetTextFields(IWebDriver driver)
+        {
+            var textFields = new List<IWebElement>();
+
+            try
+            {
+                var elements = driver.FindElements(By.CssSelector("input[type='text']"));
+                var tempList = new List<IWebElement>(elements);
+                textFields.AddRange(tempList);
+            }
+            catch
+            {
+                // throw exception or log exception
+            }
+
+            try
+            {
+                textFields.AddRange(driver.FindElements(By.TagName("textarea")).ToList());
+            }
+            catch
+            {
+                // throw exception or log exception
+            }
+
+            textFields = textFields.Where(i => !i.Displayed).ToList(); // removes all hidden fields
+
+            return textFields;
+
+        }
+
 
         [Test]
         public void MyStore()
@@ -46,18 +78,21 @@ namespace MyStore
             //Initialize the login page by calling its reference
             var pageLogin = new LoginPage(driver);
 
+            // Test within a test - verify all text fields are empty before proceding with U/I test 
+            var test = GetTextFields(driver);
+
             //I created a method in 1the Login Page Object that automatically verified text, enters email, and clicks the log in button
-            pageLogin.Login("mystor3@mystore.com");
+            pageLogin.Login("mystoafffa111ar3@mystore.com");
 
             //Initialize the register page by calling its reference
             var registerPage = new RegisterPage(driver);
-
+            
             //Enter text in all required fields
             registerPage.Title.Click();
             registerPage.CustomerFirstName.SendKeys("Jon");
             registerPage.CustomerLastName.SendKeys("Doe");
             registerPage.CustomerEmail.Clear();
-            registerPage.CustomerEmail.SendKeys("mystor3@mystore.com");
+            registerPage.CustomerEmail.SendKeys("mys1111fff1111tor3@mystore.com");
             registerPage.Password.SendKeys("12345");
             registerPage.Dateofbirth.Click();
             registerPage.Monthofbirth.Click();
