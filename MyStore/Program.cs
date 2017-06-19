@@ -4,6 +4,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System.Collections.Generic;
 using System.Linq;
+using OpenQA.Selenium.Support.UI;
 
 namespace MyStore
 {
@@ -23,6 +24,8 @@ namespace MyStore
         }
 
         private readonly IWebDriver driver = new ChromeDriver();
+
+        public static IWebDriver Driver { get; private set; }
 
         private static void Main(string[] args)
         {
@@ -80,7 +83,7 @@ namespace MyStore
 
 
             //I created a method in 1the Login Page Object that automatically verified text, enters email, and clicks the log in button
-            pageLogin.Login("mystor3@mystore.com");
+            pageLogin.Login("mystor13@mystore.com");
 
             //Initialize the register page by calling its reference
             var registerPage = new RegisterPage(driver);
@@ -90,7 +93,7 @@ namespace MyStore
 
             // Test within a test - verify all text fields are empty before proceding with U/I test 
             var test = GetTextFields(driver);
-
+            
             registerPage.CustomerFirstName.SendKeys("Jon");
             registerPage.CustomerLastName.SendKeys("Doe");
             registerPage.CustomerEmail.Clear();
@@ -123,5 +126,6 @@ namespace MyStore
             //Click the log out
             myAccountPage.LogOut.Click();
         }
+
     }
 }
