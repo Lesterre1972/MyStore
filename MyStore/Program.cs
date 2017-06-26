@@ -4,7 +4,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System.Collections.Generic;
 using System.Linq;
-using OpenQA.Selenium.Support.UI;
+using System.Runtime.CompilerServices;
 
 namespace MyStore
 {
@@ -127,5 +127,12 @@ namespace MyStore
             myAccountPage.LogOut.Click();
         }
 
+        //To allow driver to switch to new page
+   //public void NewPage()
+//{
+//  this.driver.SwitchTo().Window(this.driver.WindowHandles.Last());
+//}
+
     }
 }
+
