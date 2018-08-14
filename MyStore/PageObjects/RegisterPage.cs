@@ -12,7 +12,7 @@ namespace MyStore
             this.driver = driver;
             PageFactory.InitElements(driver, this);
         }
-
+        
         public RegisterPage()
         {
         }

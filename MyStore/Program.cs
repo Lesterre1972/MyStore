@@ -4,7 +4,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
+using New_Store.Page_Objects;
 
 namespace MyStore
 {
@@ -36,7 +36,7 @@ namespace MyStore
         {
             driver.Navigate()
                 .GoToUrl(
-                    "http://automationpractice.com/");
+                    "http://automationpractice.com/index.php");
             driver.Manage().Window.Maximize();
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
         }
@@ -83,7 +83,7 @@ namespace MyStore
 
 
             //I created a method in 1the Login Page Object that automatically verified text, enters email, and clicks the log in button
-            pageLogin.Login("mystor13@mystore.com");
+            pageLogin.Login("mystor113@mystore.com");
 
             //Initialize the register page by calling its reference
             var registerPage = new RegisterPage(driver);
@@ -97,7 +97,7 @@ namespace MyStore
             registerPage.CustomerFirstName.SendKeys("Jon");
             registerPage.CustomerLastName.SendKeys("Doe");
             registerPage.CustomerEmail.Clear();
-            registerPage.CustomerEmail.SendKeys("fromystor3@mystsssore.com");
+            registerPage.CustomerEmail.SendKeys("formystore301@mystore.com");
             registerPage.Password.SendKeys("12345");
             registerPage.Dateofbirth.Click();
             registerPage.Monthofbirth.Click();
@@ -125,6 +125,7 @@ namespace MyStore
 
             //Click the log out
             myAccountPage.LogOut.Click();
+            
         }
 
         //To allow driver to switch to new page

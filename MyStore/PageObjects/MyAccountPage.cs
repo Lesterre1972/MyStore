@@ -2,7 +2,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 
-namespace MyStore
+namespace New_Store.Page_Objects
 {
     internal class MyAccountPage
     {
