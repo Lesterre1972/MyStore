@@ -2,7 +2,6 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using System.Collections.Generic;
 using System.Linq;
 using New_Store.Page_Objects;
 using OpenQA.Selenium.Support.UI;
@@ -27,8 +26,7 @@ namespace MyStore
         private readonly IWebDriver driver = new ChromeDriver();
 
         public static IWebDriver Driver { get; private set; }
-        public object SECONDS { get; private set; }
-
+    
         private static void Main(string[] args)
         {
         }
@@ -40,7 +38,6 @@ namespace MyStore
                 .GoToUrl(
                     "http://automationpractice.com/index.php");
             driver.Manage().Window.Maximize();
-            driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(1000);
         }
 
         [Test]
@@ -55,7 +52,7 @@ namespace MyStore
 
 
             //I created a method in 1the Login Page Object that automatically verified text, enters email, and clicks the log in button
-            pageLogin.Login("Newpsw0rd@mystore.com");
+            pageLogin.Login("Newpsw0rd@myestore.com");
 
             //Initialize the register page by calling its reference
             var registerPage = new RegisterPage(driver);
@@ -68,7 +65,7 @@ namespace MyStore
             registerPage.CustomerFirstName.SendKeys("Jon");
             registerPage.CustomerLastName.SendKeys("Doe");
             registerPage.CustomerEmail.Clear();
-            registerPage.CustomerEmail.SendKeys("TestPW1@ymstore.com");
+            registerPage.CustomerEmail.SendKeys("Testprwd2@myestore.com");
             registerPage.Password.SendKeys("12345");
             registerPage.Dateofbirth.Click();
             registerPage.Monthofbirth.Click();
