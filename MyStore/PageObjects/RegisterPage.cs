@@ -1,5 +1,7 @@
-﻿using OpenQA.Selenium;
+﻿using System;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
+using OpenQA.Selenium.Support.UI;
 
 namespace MyStore
 {
@@ -16,7 +18,7 @@ namespace MyStore
         public RegisterPage()
         {
         }
-
+        
         [FindsBy(How = How.Id, Using = "id_gender1")]
         public IWebElement Title { get; set; }
 

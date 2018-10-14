@@ -43,8 +43,8 @@
       <HintPath>..\packages\NUnit.3.10.1\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SeleniumExtras.PageObjects, Version=3.11.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DotNetSeleniumExtras.PageObjects.3.11.0\lib\net45\SeleniumExtras.PageObjects.dll</HintPath>
+    <Reference Include="SeleniumExtras.PageObjects, Version=3.12.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetSeleniumExtras.PageObjects.Core.3.12.0\lib\net45\SeleniumExtras.PageObjects.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -76,9 +76,6 @@
     <Compile Include="PageObjects\LoginPage.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="bin\Debug\%24RANDOM_SEED%24" />
-    <None Include="bin\Debug\MyStore.exe.config" />
-    <None Include="bin\Debug\MyStore.vshost.exe.config" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -86,20 +83,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="bin\Debug\chromedriver-license.txt" />
-    <Content Include="bin\Debug\chromedriver.exe" />
-    <Content Include="bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll" />
-    <Content Include="bin\Debug\MyStore.exe" />
-    <Content Include="bin\Debug\MyStore.pdb" />
-    <Content Include="bin\Debug\MyStore.vshost.exe" />
-    <Content Include="bin\Debug\nunit.framework.dll" />
-    <Content Include="bin\Debug\nunit.framework.xml" />
-    <Content Include="bin\Debug\WebDriver.dll" />
-    <Content Include="bin\Debug\WebDriver.Support.dll" />
-    <Content Include="bin\Debug\WebDriver.Support.xml" />
-    <Content Include="bin\Debug\WebDriver.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Release\" />
@@ -111,10 +94,8 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\NUnit.3.10.1\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit.3.10.1\build\NUnit.props'))" />
-    <Error Condition="!Exists('..\packages\Selenium.WebDriver.ChromeDriver.2.41.0\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.WebDriver.ChromeDriver.2.41.0\build\Selenium.WebDriver.ChromeDriver.targets'))" />
     <Error Condition="!Exists('..\packages\NUnit3TestAdapter.3.10.0\build\net35\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit3TestAdapter.3.10.0\build\net35\NUnit3TestAdapter.props'))" />
   </Target>
-  <Import Project="..\packages\Selenium.WebDriver.ChromeDriver.2.41.0\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.ChromeDriver.2.41.0\build\Selenium.WebDriver.ChromeDriver.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -5,6 +5,7 @@ using OpenQA.Selenium.Chrome;
 using System.Collections.Generic;
 using System.Linq;
 using New_Store.Page_Objects;
+using OpenQA.Selenium.Support.UI;
 
 namespace MyStore
 {
@@ -26,6 +27,7 @@ namespace MyStore
         private readonly IWebDriver driver = new ChromeDriver();
 
         public static IWebDriver Driver { get; private set; }
+        public object SECONDS { get; private set; }
 
         private static void Main(string[] args)
         {
@@ -38,38 +40,8 @@ namespace MyStore
                 .GoToUrl(
                     "http://automationpractice.com/index.php");
             driver.Manage().Window.Maximize();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
+            driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(1000);
         }
-        private List<IWebElement> GetTextFields(IWebDriver driver)
-        {
-            var textFields = new List<IWebElement>();
-
-            try
-            {
-                var elements = driver.FindElements(By.CssSelector("input[type='text']"));
-                var tempList = new List<IWebElement>(elements);
-                textFields.AddRange(tempList);
-            }
-            catch
-            {
-                // throw exception or log exception
-            }
-
-            try
-            {
-                textFields.AddRange(driver.FindElements(By.TagName("textarea")).ToList());
-            }
-            catch
-            {
-                // throw exception or log exception
-            }
-
-            textFields = textFields.Where(i => !i.Displayed).ToList(); // removes all hidden fields
-
-            return textFields;
-
-        }
-
 
         [Test]
         public void MyStore()
@@ -83,21 +55,20 @@ namespace MyStore
 
 
             //I created a method in 1the Login Page Object that automatically verified text, enters email, and clicks the log in button
-            pageLogin.Login("mystor113@mystore.com");
+            pageLogin.Login("Newpsw0rd@mystore.com");
 
             //Initialize the register page by calling its reference
             var registerPage = new RegisterPage(driver);
-            
+
+            // This forces driver to wait 1000 miliseconds until the first element appears on the Register Page
+            new WebDriverWait(driver, TimeSpan.FromSeconds(1000)).Until(ExpectedConditions.ElementExists(By.Id("id_gender1")));
             //Enter text in all required fields
             registerPage.Title.Click();
-
-            // Test within a test - verify all text fields are empty before proceding with U/I test 
-            var test = GetTextFields(driver);
             
             registerPage.CustomerFirstName.SendKeys("Jon");
             registerPage.CustomerLastName.SendKeys("Doe");
             registerPage.CustomerEmail.Clear();
-            registerPage.CustomerEmail.SendKeys("formystore301@mystore.com");
+            registerPage.CustomerEmail.SendKeys("TestPW1@ymstore.com");
             registerPage.Password.SendKeys("12345");
             registerPage.Dateofbirth.Click();
             registerPage.Monthofbirth.Click();
@@ -129,10 +100,10 @@ namespace MyStore
         }
 
         //To allow driver to switch to new page
-   //public void NewPage()
-//{
-//  this.driver.SwitchTo().Window(this.driver.WindowHandles.Last());
-//}
+  public void NewPage()
+{
+ this.driver.SwitchTo().Window(this.driver.WindowHandles.Last());
+}
 
     }
 }
