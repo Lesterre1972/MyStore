@@ -52,7 +52,7 @@ namespace MyStore
 
 
             //I created a method in 1the Login Page Object that automatically verified text, enters email, and clicks the log in button
-            pageLogin.Login("Newpsw0rd@myestore.com");
+            pageLogin.Login("Nwp1555sw0rd@myestore.com");
 
             //Initialize the register page by calling its reference
             var registerPage = new RegisterPage(driver);
@@ -65,7 +65,7 @@ namespace MyStore
             registerPage.CustomerFirstName.SendKeys("Jon");
             registerPage.CustomerLastName.SendKeys("Doe");
             registerPage.CustomerEmail.Clear();
-            registerPage.CustomerEmail.SendKeys("Testprwd2@myestore.com");
+            registerPage.CustomerEmail.SendKeys("Tstp5555rwd2@myestore.com");
             registerPage.Password.SendKeys("12345");
             registerPage.Dateofbirth.Click();
             registerPage.Monthofbirth.Click();
